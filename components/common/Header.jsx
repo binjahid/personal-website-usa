@@ -14,6 +14,7 @@ const Header = () => {
     {
       name: "Home",
       link: "/home",
+      active: true,
     },
     {
       name: "Work",
@@ -34,21 +35,22 @@ const Header = () => {
       <header className={`z-[100] w-full  duration-500 header`}>
         <div className="py-6 container mx-auto flex justify-between font-tertiary items-center">
           <div>
-            <h2 className="test-[#787878] text-2xl">Website Logo</h2>
+            <h2 className="text-[#787878] text-2xl">Website Logo</h2>
           </div>
-          <div className="flex items-center md:gap-12 gap-4">
-            <div className="text-lg text-[#787878] navBreak:flex gap-5 hidden ">
-              {navItems.map((item, index) => (
-                <Link
-                  key={index}
-                  className="navItemDesing navItem"
-                  href={item.link}
+          <div className="navBreak:flex gap-8 hidden ">
+            {navItems.map((item, index) => (
+              <Link key={index} href={item.link}>
+                <a
+                  className={`text-lg ${
+                    item.active ? "text-black font-bold" : "text-[#787878]"
+                  }`}
                 >
                   {item.name}
-                </Link>
-              ))}
-              <button className="font-montserrat font-semibold"></button>
-            </div>
+                </a>
+              </Link>
+            ))}
+          </div>
+          <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <a href="!#">
                 <FaLinkedin className="text-2xl text-[#787878] hover:text-[#696969] duration-300"></FaLinkedin>
@@ -58,7 +60,6 @@ const Header = () => {
               </a>
             </div>
             <div className="navBreak:hidden flex items-center gap-8">
-              <button className="font-montserrat font-semibold"></button>
               <button
                 className="text-secondary text-4xl"
                 onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -117,23 +118,29 @@ const Header = () => {
                 </div>
               </Transition.Child>
               <div className="flex flex-shrink-0 items-center px-4">
-                <h2 className="text-2xl font-bold text-secondary">
-                  <Link href={"about"}>Rachel Marron</Link>
-                </h2>
+                <h2 className="text-[#787878] text-3xl">Website Logo</h2>
               </div>
               <nav
                 className="mt-5 h-full flex-shrink-0 divide-y divide-cyan-800 overflow-y-auto"
                 aria-label="Sidebar"
               >
-                <div className="space-y-1 px-2">
+                <div className="space-y-1 px-2 flex flex-col w-[80%] m-auto text-xl gap-4">
                   {navItems.map((item, index) => (
                     <Link
                       key={index}
-                      className="navItemDesing navItem block mb-3"
+                      className="navItemDesing navItem"
                       href={item.link}
-                      onClick={() => setSidebarOpen(false)}
                     >
-                      {item.name}
+                      <a
+                        className={`${
+                          item.active
+                            ? "text-black font-bold"
+                            : "text-[#787878]"
+                        }`}
+                        onClick={() => setSidebarOpen(false)}
+                      >
+                        {item.name}
+                      </a>
                     </Link>
                   ))}
                 </div>

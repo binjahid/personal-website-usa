@@ -35,9 +35,9 @@ const TitleDesImg = ({ title, des, img }) => {
               once: false,
             }}
             transition={{
-              duration: 0.12 * index,
+              duration: 0.08 * index,
               ease: "easeInOut",
-              delay: 0.12 * index,
+              delay: 0.08 * index,
             }}
           >
             {letter}
